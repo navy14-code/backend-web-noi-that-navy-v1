@@ -23,7 +23,7 @@ public class OrderItem {
     @ManyToOne //**
     private Product product;
 
-//    private String size;
+    private String size;
 
     private int quantity;
 

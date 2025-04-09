@@ -1,5 +1,6 @@
 package com.example.javaspringbootnavy1.modal;
 
+import com.example.javaspringbootnavy1.doman.OrderStatus;
 import com.example.javaspringbootnavy1.doman.PaymantStatus;
 import jakarta.persistence.*;
 import lombok.*;

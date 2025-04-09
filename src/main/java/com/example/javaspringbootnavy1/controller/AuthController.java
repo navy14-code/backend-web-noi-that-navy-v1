@@ -31,7 +31,7 @@ public class AuthController {
 
         AuthResponse res = new AuthResponse();
         res.setJwt(jwt);
-        res.setMessage("register successful");
+        res.setMessage("Đăng ký thành công ");
         res.setRole(User_Role.Role_Customer);
 
         return  ResponseEntity.ok(res);
@@ -45,7 +45,7 @@ public class AuthController {
 
         ApiResponse res = new ApiResponse();
 
-        res.setMessage("otp sent successful");
+        res.setMessage("Gửi mã OTP thành công");
 
 
         return  ResponseEntity.ok(res);

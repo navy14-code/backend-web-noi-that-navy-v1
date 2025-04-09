@@ -1,4 +1,4 @@
-package com.example.javaspringbootnavy1.modal;
+package com.example.javaspringbootnavy1.doman;
 
 public enum OrderStatus {
     PENDING,

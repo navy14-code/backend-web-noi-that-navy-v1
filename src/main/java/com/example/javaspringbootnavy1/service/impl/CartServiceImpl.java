@@ -32,6 +32,7 @@ public class CartServiceImpl implements CartService {
 
             int totalPrice= quality*product.getSellingPrice();
             cartItem.setSellingPrice(totalPrice);
+            cartItem.setMrpPrice(quality*product.getMrpPrice());
 
             cart.getCartItems().add(cartItem);
             cartItem.setCart(cart);
@@ -44,7 +45,7 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public Cart findUserCart(User user) {
-        Cart cart = cartRepository.findByUser(user.getId());
+        Cart cart = cartRepository.findByUserId(user.getId());
 
         int totalPrice = 0;
         int totalDiscountedPrice = 0;
@@ -60,11 +61,12 @@ public class CartServiceImpl implements CartService {
         cart.setTotalSellingPrice(totalDiscountedPrice);
         cart.setDiscount((caculateDiscountPercentage(totalPrice, totalDiscountedPrice)));
         cart.setTotalItem(totalItem);
-        return null;
+        return cart;
     }
     private int caculateDiscountPercentage(int mrpPrice, int sellingPrice) {
         if(mrpPrice <= 0) {
-            throw new IllegalArgumentException("Giá thực tế phải lớn hơn 0");
+            return 0;
+//            throw new IllegalArgumentException("Giá thực tế phải lớn hơn 0");
         }
         double discount = mrpPrice - sellingPrice;
         double discountPercentage =(discount/mrpPrice)*100;
